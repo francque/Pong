@@ -6,8 +6,11 @@
 #include <sys/time.h>
 #include <string.h>
 #include <windows.h>
-#define MAXLENGTH 56
-#define MAXWIDTH 190
+//#define MAXLENGTH 56
+//#define MAXWIDTH 190
+
+#define MAXLENGTH GetSystemMetrics(SM_CXFULLSCREEN)
+#define MAXWIDTH GetSystemMetrics(SM_CYFULLSCREEN)
 
 void generateGame(char PADDLE, char BALL, int leftPos, int rightPos);
 void drawPaddle(char PADDLE, int pos, int oldPos, char SPACE, int side);
@@ -15,7 +18,8 @@ static void initGame();
 void delay(int milliseconds);
 //void startBall(int r, char BALL, int* ballX);
 static int difficulty = 0;
-//static int MAXWIDTH, MAXLENGTH;
+//static const int MAXWIDTH = GetSystemMetrics(SM_CXFULLSCREEN);
+//static const int MAXLENGTH = GetSystemMetrics(SM_CYMAXIMIZED);
 
 int main(void) {
 
@@ -317,9 +321,9 @@ void drawPaddle(char PADDLE, int pos, int oldPos, char SPACE, int side) {
 	
 	//attron(COLOR_PAIR(1));
 	//WINDOW *win = newwin(10, 10, 10, 10);
-	start_color();
+	/*start_color();
 	init_pair(1, COLOR_GREEN, COLOR_BLACK);
-	wbkgd(stdscr, COLOR_PAIR(1));
+	wbkgd(stdscr, COLOR_PAIR(1));*/
 	refresh();
 	
 	erase();
